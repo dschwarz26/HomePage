@@ -5,3 +5,6 @@ urlpatterns = patterns('',
     url(r'^$', views.home, name='home'),
     url(r'resume/$', views.resume, name='resume')
 )
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()

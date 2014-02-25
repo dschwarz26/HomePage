@@ -7,3 +7,6 @@ urlpatterns = patterns('',
     url(r'^$', 'HomePage.pages.views.home', name='home'),
     url(r'^pages', include('HomePage.pages.urls')),
 )
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()
