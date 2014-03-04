@@ -1,28 +1,19 @@
 from django.db import models
 
-class Essay(models.Model):
+class TextModel(models.Model):
     name = models.CharField(max_length=200, primary_key=True)
     publish_date = models.DateTimeField('Date Published')
-    last_edit_date = models.DateTimeField('Last Edit Date')
     content = models.TextField(default='')
+    rank = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.name
 
-class Biopic(models.Model):
-    name = models.CharField(max_length=200, primary_key=True)
-    publish_date = models.DateTimeField('Date Published')
-    last_edit_date = models.DateTimeField('Last Edit Date')
-    content = models.TextField(default='')
+class Essay(TextModel):
+    pass
 
-    def __unicode__(self):
-        return self.name
+class Biopic(TextModel):
+    pass
 
-class Personal(models.Model):
-    name = models.CharField(max_length=200, primary_key=True)
-    publish_date = models.DateTimeField('Date Published')
-    last_edit_date = models.DateTimeField('Last Edit Date')
-    content = models.TextField(default='')
-
-    def __unicode__(self):
-        return self.name
+class Personal(TextModel):
+    pass

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from HomePage.pages.models import Essay
+from HomePage.pages.models import Essay, Biopic, Personal
 
 def home(request):
     return render(request, 'home.html')
@@ -16,5 +16,5 @@ def biopic(request, biopic_name):
     return render(request, 'biopic.html', {'biopic': biopic})
 
 def personal(request, personal_name):
-    personal = get_object_or_404(Essay, pk = personal_name)
+    personal = get_object_or_404(Personal, pk = personal_name)
     return render(request, 'personal.html', {'personal': personal})
