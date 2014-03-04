@@ -7,7 +7,7 @@ class Command(BaseCommand):
     base_path = 'HomePage/pages/static/'
     #Reads the .txt files in the static folder, creates models from them,
     #and writes them to the db.
-    def handle(self):
+    def handle(self, *args, **options):
         self.read_in_essays()
         self.read_in_biopics()
         self.read_in_personal()
@@ -28,20 +28,22 @@ class Command(BaseCommand):
             'Global Maxima',
             'A Simple Case of Updating'
         ]
-        for file in listdir(self.base_path + '/Essays'):
-            o = open(file, 'rb')
+        path = self.base_path + '/Essays/'
+        for file in listdir(path):
+            self.stdout.write(file)
+            o = open(path + file, 'rb')
             date_tokens = o.readline().split('-')
-            name = file[1:-4]
+            name = file[:-4]
             try:
                 essay = Essay(
                     name = name,
-                    publish_date = datetime.date(date_tokens[0], date_tokens[1], date_tokens[2]),
+                    publish_date = datetime.date(int(date_tokens[0]), int(date_tokens[1]), int(date_tokens[2])),
                     content = o.read(),
                     rank = essay_order.index(name))
-            except essay.DoesNotExist:
-                raise CommandError('Essay %s could not be made' % essay.name)
+            except Essay.DoesNotExist:
+                raise CommandError('Essay %s could not be made' % name)
             except ValueError:
-                raise CommandError('Essay %s not in list' % essay.name)
+                raise CommandError('Essay %s not in list' % name)
             essay.save()
 
     def read_in_biopics(self):
@@ -51,20 +53,21 @@ class Command(BaseCommand):
            'Christopher Hitchens',
            'Ludwig Wittgenstein'
         ]
-        for file in listdir(self.base_path + '/Biopics'):
-            o = open(file, 'rb')
+        path = self.base_path + '/Biopics/'
+        for file in listdir(path):
+            o = open(path + file, 'rb')
             date_tokens = o.readline().split('-')
-            name = file[1:-4]
+            name = file[:-4]
             try:
                 biopic = Biopic(
                     name = name,
-                    publish_date = datetime.date(date_tokens[0], date_tokens[1], date_tokens[2]),
+                    publish_date = datetime.date(int(date_tokens[0]), int(date_tokens[1]), int(date_tokens[2])),
                     content = o.read(),
                     rank = biopic_order.index(name))
-            except biopic.DoesNotExist:
-                raise CommandError('Biopic %s could not be made' % biopic.name)
+            except Biopic.DoesNotExist:
+                raise CommandError('Biopic %s could not be made' % name)
             except ValueError:
-                raise CommandError('Biopic %s not in list' % biopic.name)
+                raise CommandError('Biopic %s not in list' % name)
             biopic.save()
 
     def read_in_personals(self):
@@ -75,19 +78,20 @@ class Command(BaseCommand):
             'Lessons from 2010-2011',
             'Nootropics'
         ]
-        for file in listdir(self.base_path + '/Personals'):
-            o = open(file, 'rb')
+        path = self.base_path + '/Personals/'
+        for file in listdir(path):
+            o = open(path + file, 'rb')
             date_tokens = o.readline().split('-')
-            name = file[1:-4]
+            name = file[:-4]
             try:
                 personal = Personal(
                     name = name,
-                    publish_date = datetime.date(date_tokens[0], date_tokens[1], date_tokens[2]),
+                    publish_date = datetime.date(int(date_tokens[0]), int(date_tokens[1]), int(date_tokens[2])),
                     content = o.read(),
                     rank = personal_order.index(name))
-            except personal.DoesNotExist:
-                raise CommandError('Personal %s could not be made' % personal.name)
+            except Personal.DoesNotExist:
+                raise CommandError('Personal %s could not be made' % name)
             except ValueError:
-                raise CommandError('Personal %s not in list' % personal.name)
+                raise CommandError('Personal %s not in list' % name)
 
             personal.save()
