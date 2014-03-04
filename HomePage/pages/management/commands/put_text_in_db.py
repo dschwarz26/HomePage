@@ -3,14 +3,15 @@ from HomePage.pages.models import Essay, Biopic, Personal
 from os import listdir
 import datetime
 
+#Reads the .txt files in the static folder, creates models from them,
+#and writes them to the db.
 class Command(BaseCommand):
-    base_path = 'HomePage/pages/static/'
-    #Reads the .txt files in the static folder, creates models from them,
-    #and writes them to the db.
+    base_path = 'HomePage/pages/static'
+
     def handle(self, *args, **options):
         self.read_in_essays()
         self.read_in_biopics()
-        self.read_in_personal()
+        self.read_in_personals()
 
     def read_in_essays(self):
         essay_order = [
@@ -23,14 +24,13 @@ class Command(BaseCommand):
             'Virtue Ethics',
             'A Job Well Done',
             'A Life Well Lived',
-            'Categorizing Errors of Reasoning',
+            'On Categorizing Errors of Reasoning',
             'Unpacking',
             'Global Maxima',
             'A Simple Case of Updating'
         ]
         path = self.base_path + '/Essays/'
         for file in listdir(path):
-            self.stdout.write(file)
             o = open(path + file, 'rb')
             date_tokens = o.readline().split('-')
             name = file[:-4]
@@ -75,10 +75,10 @@ class Command(BaseCommand):
             'My Grandma Janet',
             'A Difficult Life Transition',
             'Singularity Summit 2012',
-            'Lessons from 2010-2011',
+            'Lessons from 2010, 2011',
             'Nootropics'
         ]
-        path = self.base_path + '/Personals/'
+        path = self.base_path + '/Personal/'
         for file in listdir(path):
             o = open(path + file, 'rb')
             date_tokens = o.readline().split('-')

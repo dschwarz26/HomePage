@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
+import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'Essay'
         db.create_table('pages_essay', (
-            ('name', self.gf('django.db.models.fields.CharField')(primary_key=True, max_length=200)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, primary_key=True)),
             ('publish_date', self.gf('django.db.models.fields.DateField')(default=datetime.datetime(2000, 1, 1, 0, 0))),
             ('content', self.gf('django.db.models.fields.TextField')(default='No Content Found')),
             ('rank', self.gf('django.db.models.fields.IntegerField')(default=-1)),
@@ -19,7 +19,7 @@ class Migration(SchemaMigration):
 
         # Adding model 'Biopic'
         db.create_table('pages_biopic', (
-            ('name', self.gf('django.db.models.fields.CharField')(primary_key=True, max_length=200)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, primary_key=True)),
             ('publish_date', self.gf('django.db.models.fields.DateField')(default=datetime.datetime(2000, 1, 1, 0, 0))),
             ('content', self.gf('django.db.models.fields.TextField')(default='No Content Found')),
             ('rank', self.gf('django.db.models.fields.IntegerField')(default=-1)),
@@ -28,7 +28,7 @@ class Migration(SchemaMigration):
 
         # Adding model 'Personal'
         db.create_table('pages_personal', (
-            ('name', self.gf('django.db.models.fields.CharField')(primary_key=True, max_length=200)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, primary_key=True)),
             ('publish_date', self.gf('django.db.models.fields.DateField')(default=datetime.datetime(2000, 1, 1, 0, 0))),
             ('content', self.gf('django.db.models.fields.TextField')(default='No Content Found')),
             ('rank', self.gf('django.db.models.fields.IntegerField')(default=-1)),
@@ -51,21 +51,21 @@ class Migration(SchemaMigration):
         'pages.biopic': {
             'Meta': {'object_name': 'Biopic'},
             'content': ('django.db.models.fields.TextField', [], {'default': "'No Content Found'"}),
-            'name': ('django.db.models.fields.CharField', [], {'primary_key': 'True', 'max_length': '200'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'primary_key': 'True'}),
             'publish_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.datetime(2000, 1, 1, 0, 0)'}),
             'rank': ('django.db.models.fields.IntegerField', [], {'default': '-1'})
         },
         'pages.essay': {
             'Meta': {'object_name': 'Essay'},
             'content': ('django.db.models.fields.TextField', [], {'default': "'No Content Found'"}),
-            'name': ('django.db.models.fields.CharField', [], {'primary_key': 'True', 'max_length': '200'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'primary_key': 'True'}),
             'publish_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.datetime(2000, 1, 1, 0, 0)'}),
             'rank': ('django.db.models.fields.IntegerField', [], {'default': '-1'})
         },
         'pages.personal': {
             'Meta': {'object_name': 'Personal'},
             'content': ('django.db.models.fields.TextField', [], {'default': "'No Content Found'"}),
-            'name': ('django.db.models.fields.CharField', [], {'primary_key': 'True', 'max_length': '200'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'primary_key': 'True'}),
             'publish_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.datetime(2000, 1, 1, 0, 0)'}),
             'rank': ('django.db.models.fields.IntegerField', [], {'default': '-1'})
         }
