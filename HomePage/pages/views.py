@@ -7,6 +7,14 @@ def home(request):
 def resume(request):
     return render(request, 'resume.html')
 
-def essay(request, essay_id):
-    essay = get_object_or_404(Essay, pk = essay_id)
+def essay(request, essay_name):
+    essay = get_object_or_404(Essay, pk = essay_name)
     return render(request, 'essay.html', {'essay': essay})
+
+def biopic(request, biopic_name):
+    biopic = get_object_or_404(Biopic, pk = biopic_name)
+    return render(request, 'biopic.html', {'biopic': biopic})
+
+def personal(request, personal_name):
+    personal = get_object_or_404(Essay, pk = personal_name)
+    return render(request, 'personal.html', {'personal': personal})
