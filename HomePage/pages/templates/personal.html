@@ -1,1 +1,12 @@
-{{ personal.content }}
+{% load staticfiles %}
+
+<html>
+    <head>
+    <link rel='shortcut icon' href='http://dschwarz.pythonanywhere.com/static/favicon.ico' type='image/ico' />
+        <h1>{{ personal.name }}</h1>
+        <h2>{{ personal.publish_date }}</h2>
+        <body>
+            <p>{{ personal.content }}</p>
+        </body>
+    </head>
+</html>

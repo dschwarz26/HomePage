@@ -1,1 +1,12 @@
-{{ essay.content }}
+{% load staticfiles %}
+
+<html>
+    <head>
+    <link rel='shortcut icon' href='http://dschwarz.pythonanywhere.com/static/favicon.ico' type='image/ico' />
+        <h1>{{ essay.name }}</h1>
+        <h2>{{ essay.publish_date }}</h2>
+        <body>
+            <p>{{ essay.content }}</p>
+        </body>
+    </head>
+</html>

@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load lookup %}
 
 <html>
     <head>
@@ -12,63 +13,36 @@
                     <th>Biopics</th>
                     <th>Personal</th>
                     <th>Links</th>
-                </tr><tr>
-                    <td><li><a href='https://github.com/dschwarz26/PokerBot'>PokerBots</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/12/07/misguided-but-effective-heuristics/'>Misguided but Effective Heuristics</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/06/22/christopher-hitchens/'>Christopher Hitchens</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2013/12/19/my-grandma-janet/'>My Grandma Janet</a></li></td>
-                    <td><li><a href='https://www.facebook.com/daniel.schwarz.735'>Facebook</a></li></td>
-                </tr><tr>
-                    <td><li><a href='https://github.com/dschwarz26/ChessBots'>ChessBots</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/7/09/beckoning/'>Beckoning</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/06/07/ludwig-wittgenstein/'>Ludwig Wittgenstein</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2013/06/25/a-difficult-life-transition/'>A Difficult Life Transition</a></li></td>
-                    <td><li><a href='https://twitter.com/dschwarz26'>Twitter</a></li></td>
-                </tr><tr>
-                    <td><li><a href='https://github.com/dschwarz26/PersistentPhoto'>PersistentPhoto</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2011/10/14/utility-swaps/'>Utility Swaps</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2011/07/20/sam-harris/'>Sam Harris</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/10/18/singularity-summit-2012/'>Singularity Summit 2012</a></li></td>
-                    <td><li><a href='http://www.linkedin.com/profile/view?id=192589584&trk=nav_responsive_tab_profile_pic'>LinkedIn</a></li></td>
-                </tr><tr>
-                    <td><li><a href='https://github.com/dschwarz26/HomePage'>HomePage</a></li></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/03/22/in-defense-of-eating-meat/'>In Defense of Eating Meat</a></li></td>
+                </tr>
+                {% for essay in essays %}
+                <tr>
+                    {% if forloop.counter0 < projects|length %}
+                    <td><li><a href='projects|lookup_link:forloop.counter0'>{{projects|lookup_name:forloop.counter0}}</a></li></td>
+                    {% else %}
                     <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2011/12/24/signaling-or-what-i-learned-in-2010-2011/'>Lessons From 2010-2011</a></li></td>
-                    <td><li><a href='https://github.com/dschwarz26'>GitHub</a></li></td>
-                </tr><tr>
+                    {% endif %}
+                    {% if forloop.counter0 < essays|length %}
+                    <td><li><a href='http://dschwarz.pythonanywhere.com/pages/essays/{{essays|lookup_name:forloop.counter0}}'>{{essays|lookup_name:forloop.counter0}}</a></li></td>
+                    {% else %}
                     <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2013/04/23/more-on-ethics-of-vegetarianism/'>More on Ethics of Vegetarianism</a></li></td>
+                    {% endif %}
+                    {% if forloop.counter0 < biopics|length %}
+                    <td><li><a href='http://dschwarz.pythonanywhere.com/pages/biopics/{{biopics|lookup_name:forloop.counter0}}'>{{biopics|lookup_name:forloop.counter0}}</a></li></td>
+                    {% else %}
                     <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2013/03/31/nootropics/'>Nootropics</a></li></td>
-                    <td><li><a href='http://www.keithschwarz.com'>Keith Schwarz</a></li></td>
-                </tr><tr>
+                    {% endif %}
+                    {% if forloop.counter0 < personals|length %}
+                    <td><li><a href='http://dschwarz.pythonanywhere.com/pages/personal/{{personals|lookup_name:forloop.counter0}}'>{{personals|lookup_name:forloop.counter0}}</a></li></td>
+                    {% else %}
                     <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2011/07/21/a-job-well-done/'>A Job Well Done</a></li></td>
+                    {% endif %}
+                    {% if forloop.counter0 < links|length %}
+                    <td><li><a href='links|lookup_link:forloop.counter0'>{{links|lookup_name:forloop.counter0}}</a></li></td>
+                    {% else %}
                     <td></td>
-                    <td></td>
-                    <td><li><a href='http://www.josephschwarz.com'>Joseph Schwarz</a></li></td>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2011/07/22/a-life-well-lived/'>A Life Well Lived</a></li></td>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/09/28/virtue-ethics/'>Virtue Ethics</a></li></td>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2013/09/03/a-simple-case-of-updating/'>A Simple Case of Updating</a></li></td>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2011/07/15/on-categorizing-errors-of-reasoning/'>Categorizing Errors of Reasoning</a></li></td>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2014/02/05/unpacking/'>Unpacking</a></li></td>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/03/20/global-maxima/'>Global Maxima</a></li>
-                </tr><tr>
-                    <td></td>
-                    <td><li><a href='http://dschwarz26.wordpress.com/2012/02/22/dislocated-priors/'>Dislocated Priors</a></li>
+                    {% endif %}
+                </tr>
+                {% endfor %}
             </table>
         </body>
     </head>

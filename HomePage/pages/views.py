@@ -1,8 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from HomePage.pages.models import Essay, Biopic, Personal
+from HomePage.pages.models import Essay, Biopic, Personal, Project, Link
 
 def home(request):
-    return render(request, 'home.html')
+    context = {
+        'essays': Essay.objects.all().order_by('rank'),
+        'biopics': Biopic.objects.all().order_by('rank'),
+        'personals': Personal.objects.all().order_by('rank'),
+        'projects': Project.objects.all().order_by('rank'),
+        'links': Link.objects.all().order_by('rank')
+    }
+    return render(request, 'home.html', context)
 
 def resume(request):
     return render(request, 'resume.html')

@@ -1,1 +1,12 @@
-{{ biopic.content }}
+{% load staticfiles %}
+
+<html>
+    <head>
+    <link rel='shortcut icon' href='http://dschwarz.pythonanywhere.com/static/favicon.ico' type='image/ico' />
+        <h1>{{ biopic.name }}</h1>
+        <h2>{{ biopic.publish_date }}</h2>
+        <body>
+            <p>{{ biopic.content }}</p>
+        </body>
+    </head>
+</html>
